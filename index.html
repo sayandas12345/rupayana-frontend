@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rupayana – Modern Banking UI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/lucide-static/font/lucide.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- LOGIN + REGISTER -->
+  <div id="auth-screen" class="center-screen fade-in">
+    <div class="auth-box glass">
+      <h2 class="title">Rupayana</h2>
+      <p class="subtitle">Modern Digital Banking</p>
+
+      <div id="auth-forms">
+        <!-- LOGIN -->
+        <div id="login-form">
+          <input id="login-email" type="text" placeholder="Email" />
+          <input id="login-pass" type="password" placeholder="Password" />
+          <button onclick="login()" class="btn-gradient">Login</button>
+          <p class="switch-text" onclick="toggleMode('register')">Create Account</p>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="register-form" style="display:none;">
+          <input id="reg-name" type="text" placeholder="Full Name" />
+          <input id="reg-email" type="text" placeholder="Email" />
+          <input id="reg-pass" type="password" placeholder="Password" />
+          <button onclick="register()" class="btn-gradient">Register</button>
+          <p class="switch-text" onclick="toggleMode('login')">Already have account?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" style="display:none;">
+    <header class="topbar">
+      <h2>Rupayana</h2>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="section fade-in" id="dashboard-main">
+      <h3 class="section-title">Welcome, <span id="user-name"></span></h3>
+
+      <div class="card-grid">
+        <div class="card" onclick="openPage('transfer')">
+          <i class="lucide lucide-send"></i>
+          <p>Bank Transfer</p>
+        </div>
+        <div class="card" onclick="openPage('bill')">
+          <i class="lucide lucide-file-text"></i>
+          <p>Bill Payments</p>
+        </div>
+        <div class="card" onclick="openPage('transactions')">
+          <i class="lucide lucide-list"></i>
+          <p>Transactions</p>
+        </div>
+        <div class="card" onclick="openPage('account')">
+          <i class="lucide lucide-user"></i>
+          <p>Account</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSFER PAGE -->
+    <div id="transfer" class="section subpage">
+      <h3 class="section-title">Bank Transfer</h3>
+      <input id="to" placeholder="Recipient" class="input"/>
+      <input id="amount" placeholder="Amount" class="input"/>
+      <button onclick="sendMoney()" class="btn-gradient">Send</button>
+    </div>
+
+    <!-- BILL PAYMENT PAGE -->
+    <div id="bill" class="section subpage">
+      <h3 class="section-title">Bill Payment</h3>
+      <input id="biller" placeholder="Biller Name" class="input"/>
+      <input id="bill-amount" placeholder="Amount" class="input"/>
+      <button onclick="payBill()" class="btn-gradient">Pay Bill</button>
+    </div>
+
+    <!-- TRANSACTIONS PAGE -->
+    <div id="transactions" class="section subpage">
+      <h3 class="section-title">Transaction History</h3>
+      <div id="txn-list" class="txn-list"></div>
+    </div>
+
+    <!-- ACCOUNT PAGE -->
+    <div id="account" class="section subpage">
+      <h3 class="section-title">Account Details</h3>
+      <p class="detail"><strong>Name:</strong> <span id="acc-name"></span></p>
+      <p class="detail"><strong>Email:</strong> <span id="acc-email"></span></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

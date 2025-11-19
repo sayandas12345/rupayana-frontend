@@ -1,0 +1,149 @@
+/* GLOBAL */
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #10172a, #050510);
+  font-family: "Poppins", sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.center-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* AUTH */
+.auth-box {
+  width: 330px;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: .7;
+}
+
+input {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 14px;
+}
+
+.btn-gradient {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  background: linear-gradient(45deg, #6366F1, #EC4899);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-gradient:hover {
+  transform: scale(1.05);
+}
+
+.switch-text {
+  margin-top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* DASHBOARD */
+.topbar {
+  padding: 18px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 6px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.section {
+  padding: 20px;
+}
+
+.section-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.15);
+}
+
+.card i {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.subpage {
+  display: none;
+}
+
+.txn-list {
+  margin-top: 18px;
+}
+
+.txn-row {
+  background: rgba(255,255,255,0.07);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.fade-in {
+  animation: fade .5s ease forwards;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
