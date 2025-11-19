@@ -8,14 +8,13 @@
 </head>
 
 <body>
-  <!-- LOGIN + REGISTER -->
+  <!-- LOGIN / REGISTER -->
   <div id="auth-screen" class="center-screen fade-in">
     <div class="auth-box glass">
       <h2 class="title">Rupayana</h2>
       <p class="subtitle">Modern Digital Banking</p>
 
       <div id="auth-forms">
-        <!-- LOGIN -->
         <div id="login-form">
           <input id="login-email" type="text" placeholder="Email" />
           <input id="login-pass" type="password" placeholder="Password" />
@@ -23,7 +22,6 @@
           <p class="switch-text" onclick="toggleMode('register')">Create Account</p>
         </div>
 
-        <!-- REGISTER -->
         <div id="register-form" style="display:none;">
           <input id="reg-name" type="text" placeholder="Full Name" />
           <input id="reg-email" type="text" placeholder="Email" />
@@ -37,64 +35,98 @@
 
   <!-- DASHBOARD -->
   <div id="dashboard" style="display:none;">
-    <header class="topbar">
-      <h2>Rupayana</h2>
-      <button class="logout-btn" onclick="logout()">Logout</button>
-    </header>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2 class="side-title">Rupayana</h2>
 
-    <div class="section fade-in" id="dashboard-main">
-      <h3 class="section-title">Welcome, <span id="user-name"></span></h3>
-
-      <div class="card-grid">
-        <div class="card" onclick="openPage('transfer')">
-          <i class="lucide lucide-send"></i>
-          <p>Bank Transfer</p>
-        </div>
-        <div class="card" onclick="openPage('bill')">
-          <i class="lucide lucide-file-text"></i>
-          <p>Bill Payments</p>
-        </div>
-        <div class="card" onclick="openPage('transactions')">
-          <i class="lucide lucide-list"></i>
-          <p>Transactions</p>
-        </div>
-        <div class="card" onclick="openPage('account')">
-          <i class="lucide lucide-user"></i>
-          <p>Account</p>
-        </div>
+      <div class="menu-item" onclick="openPage('dashboard-main')">
+        <i class="lucide lucide-home"></i> Dashboard
       </div>
-    </div>
 
-    <!-- TRANSFER PAGE -->
-    <div id="transfer" class="section subpage">
-      <h3 class="section-title">Bank Transfer</h3>
-      <input id="to" placeholder="Recipient" class="input"/>
-      <input id="amount" placeholder="Amount" class="input"/>
-      <button onclick="sendMoney()" class="btn-gradient">Send</button>
-    </div>
+      <div class="menu-item" onclick="openPage('transfer')">
+        <i class="lucide lucide-send"></i> Bank Transfer
+      </div>
 
-    <!-- BILL PAYMENT PAGE -->
-    <div id="bill" class="section subpage">
-      <h3 class="section-title">Bill Payment</h3>
-      <input id="biller" placeholder="Biller Name" class="input"/>
-      <input id="bill-amount" placeholder="Amount" class="input"/>
-      <button onclick="payBill()" class="btn-gradient">Pay Bill</button>
-    </div>
+      <div class="menu-item" onclick="openPage('bill')">
+        <i class="lucide lucide-file-text"></i> Bill Payment
+      </div>
 
-    <!-- TRANSACTIONS PAGE -->
-    <div id="transactions" class="section subpage">
-      <h3 class="section-title">Transaction History</h3>
-      <div id="txn-list" class="txn-list"></div>
-    </div>
+      <div class="menu-item" onclick="openPage('transactions')">
+        <i class="lucide lucide-list"></i> Transactions
+      </div>
 
-    <!-- ACCOUNT PAGE -->
-    <div id="account" class="section subpage">
-      <h3 class="section-title">Account Details</h3>
-      <p class="detail"><strong>Name:</strong> <span id="acc-name"></span></p>
-      <p class="detail"><strong>Email:</strong> <span id="acc-email"></span></p>
-    </div>
+      <div class="menu-item" onclick="openPage('account')">
+        <i class="lucide lucide-user"></i> Account
+      </div>
+
+      <div class="menu-item" onclick="openPage('ai-assistant')">
+        <i class="lucide lucide-sparkles"></i> AI Assistant
+      </div>
+
+      <button class="logout-btn2" onclick="logout()">Logout</button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+      <!-- DASHBOARD HOME -->
+      <section id="dashboard-main" class="page active fade-in">
+        <h2>Welcome, <span id="user-name"></span> 👋</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Total Balance</h3>
+            <p class="big-number" id="balance">₹0</p>
+          </div>
+
+          <div class="card">
+            <h3>AI Financial Tip</h3>
+            <p id="ai-tip">"Spend wisely today!"</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BANK TRANSFER -->
+      <section id="transfer" class="page">
+        <h2>Bank Transfer</h2>
+        <input id="to" placeholder="Recipient" />
+        <input id="amount" placeholder="Amount" />
+        <button onclick="sendMoney()" class="btn-gradient">Send</button>
+      </section>
+
+      <!-- BILL PAYMENT -->
+      <section id="bill" class="page">
+        <h2>Bill Payment</h2>
+        <input id="biller" placeholder="Biller Name" />
+        <input id="bill-amount" placeholder="Amount" />
+        <button onclick="payBill()" class="btn-gradient">Pay Bill</button>
+      </section>
+
+      <!-- TRANSACTION HISTORY -->
+      <section id="transactions" class="page">
+        <h2>Transactions</h2>
+        <div id="txn-list"></div>
+      </section>
+
+      <!-- ACCOUNT PAGE -->
+      <section id="account" class="page">
+        <h2>Account Details</h2>
+        <p><strong>Name:</strong> <span id="acc-name"></span></p>
+        <p><strong>Email:</strong> <span id="acc-email"></span></p>
+      </section>
+
+      <!-- AI ASSISTANT -->
+      <section id="ai-assistant" class="page">
+        <h2>AI Assistant</h2>
+        <input id="ai-input" placeholder="Ask something... (e.g. 'show last 3 transactions')" />
+        <button class="btn-gradient" onclick="runAI()">Ask</button>
+        <div id="ai-output" class="ai-box"></div>
+      </section>
+
+    </main>
   </div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
+
